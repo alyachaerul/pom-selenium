@@ -1,5 +1,9 @@
 # Page Object Model on Creating Test Script in Selenium
 
+Web Reference : 
+1. GoCalc : `http://gointerview.s3-website-us-east-1.amazonaws.com/calculator.html`
+2. Automation Testing Web : `http://automationpractice.com/index.php?`
+
 Install pytest, import pytest : 
 `import pytest` 
 
