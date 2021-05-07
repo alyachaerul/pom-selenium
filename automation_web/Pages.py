@@ -40,8 +40,7 @@ class BasePage():
     
     # Fungsi untuk memilih item di dropdown
     def select_from_dropdown(self, locator, item):
-        dropdown = Select(WebDriverWait(self.driver, 10 ).until(
-            EC.visibility_of_element_located(locator)))
+        dropdown = Select(self.driver.find_element_by_id(locator))
         dropdown.select_by_visible_text(item)
 
 
@@ -115,4 +114,6 @@ class ContactPage(BasePage):
         self.select_from_dropdown(Locators.CONTACT_US_DROPDOWN, TestData.DROPDOWN_CS)
         self.enter_text(Locators.CONTACT_US_EMAIL, TestData.CONTACT_EMAIL)
         self.enter_text(Locators.CONTACT_US_TEXT_AREA, TestData.CONTACT_MESSAGE)
+        self.click(Locators.CONTACT_SEND)
+        self.is_visible(Locators.CONTACT_ALERT)
 

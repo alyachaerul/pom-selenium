@@ -34,7 +34,6 @@ class BaseTest(unittest.TestCase):
         self.driver.quit()
 
 class ContactUsTest(BaseTest):
-
     def test_send_message_to_cs(self):
         # Membuat objek homepage
         self.homepage = HomePage(self.driver)
@@ -49,9 +48,8 @@ class ContactUsTest(BaseTest):
         self.contactpage.send_message_to_cs()
 
         # Assertion
-        success_text = self.authenticationpage.get_text(Locators.CONTACT_ALERT)
+        success_text = self.contactpage.get_text(Locators.CONTACT_ALERT)
         self.assertEqual(success_text, TestData.CONTACT_SUCCESS_ALERT)
-
 
 class LoginTest(BaseTest):
     def test_login_success(self):
@@ -71,23 +69,6 @@ class LoginTest(BaseTest):
         header = self.authenticationpage.get_text(Locators.MY_ACCOUNT_PAGE_HEADER)
         self.assertEqual("MY ACCOUNT", header)
 
-    def test_register_newsletter_valid(self):
-        # Step 1 - Membuat objek Home Page
-        self.homepage = HomePage(self.driver)
-
-        # Step 2 - Masukkan email di Newletter
-        self.homepage.enter_text(Locators.NEWSLETTER_INPUT, TestData.NEWSLETTER_EMAIL)
-        print(TestData.NEWSLETTER_EMAIL)
-        # Step 3 - Click Submit button
-        self.homepage.click(Locators.SUBMIT_NEWSLETTER)
-
-        # # Step 2 & 3 - Masukkan email dan Click Submit
-        # self.homepage.register_newsletter_valid()
-
-        # Assertion
-        teks = self.homepage.get_text(Locators.NEWSLETTER_ALERT)
-        self.assertEqual(TestData.NEWSLETTER_SUCCESS, teks)
-    
     def test_login_failed(self):
         # Membuat objek homepage
         self.homepage = HomePage(self.driver)
@@ -140,7 +121,24 @@ class LoginTest(BaseTest):
         empty_field_result = self.homepage.get_text(Locators.EMAIL_REQUIRED_ALERT)
         self.assertEqual(empty_field_result, TestData.ALERT_EMAIL_REQUIRED)
 
+class NewsletterTest(BaseTest):
 
+    def test_register_newsletter_valid(self):
+        # Step 1 - Membuat objek Home Page
+        self.homepage = HomePage(self.driver)
+
+        # Step 2 - Masukkan email di Newletter
+        self.homepage.enter_text(Locators.NEWSLETTER_INPUT, TestData.NEWSLETTER_EMAIL)
+        print(TestData.NEWSLETTER_EMAIL)
+        # Step 3 - Click Submit button
+        self.homepage.click(Locators.SUBMIT_NEWSLETTER)
+
+        # # Step 2 & 3 - Masukkan email dan Click Submit
+        # self.homepage.register_newsletter_valid()
+
+        # Assertion
+        teks = self.homepage.get_text(Locators.NEWSLETTER_ALERT)
+        self.assertEqual(TestData.NEWSLETTER_SUCCESS, teks)
 
     def test_register_newsletter_invalid(self):
         pass

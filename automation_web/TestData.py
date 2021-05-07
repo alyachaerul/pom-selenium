@@ -28,7 +28,7 @@ class TestData():
     NEWSLETTER_REGISTERED = "Newsletter : This email address is already registered."
 
     # Contact Us
-    DROPDOWN_CS = "Customer Service"
+    DROPDOWN_CS = "Customer service"
     DROPDOWN_WM = "Webmaster"
     CONTACT_EMAIL = faker.ascii_email()
     CONTACT_MESSAGE = "Lorem ipsum dolor sit amet...."
